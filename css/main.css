@@ -148,7 +148,9 @@ img.left, figure.left {
  	background: -moz-linear-gradient(top, #013E74 , #025FB1);
  	background: -webkit-gradient(linear, 0 0, 0 100%, from(#013E74),  to(#025FB1));
 	width: 100%;
-	
+	margin-top:-10px;
+	z-index: 3000 !important;
+	position: fixed;
 	/*padding: 2.5em 0 0 0;*/
 	/*margin: 0 auto;*/
 }
@@ -206,7 +208,7 @@ img.left, figure.left {
 	#banner nav a:hover, #banner nav a:active,
 	#banner nav .active a:link, #banner nav .active a:visited {
 		/*background: #C74451;*/
-		text-shadow: 0.2em 0.2em #013E75;
+		text-shadow: .6em .3em #013E75;
 		/*text-shadow: none !important;*/
 	}
 	
@@ -294,6 +296,7 @@ img.left, figure.left {
 	margin-top: 7px;
 	margin-bottom:-50px;
 	font-size: 1.5em;
+	padding-top: 50px;
 }
 #lang ul li{
 	list-style-type: none;
@@ -457,12 +460,24 @@ section {
 	Extras
 *****************/
 #extras {
-	margin: 0 auto 3em auto; 
 	overflow: hidden;
-	margin-left: 10px;
-	padding: 10px 10px;
-	width: 97%;
-	background: -moz-linear-gradient(center top , #0250B1, #99CCFF) repeat scroll 0 0 transparent;
+	padding: 10px 0;
+	width: 100%;
+	background-image: linear-gradient(bottom, rgb(153,204,255) 21%, rgb(2,81,177) 76%);
+	background-image: -o-linear-gradient(bottom, rgb(153,204,255) 21%, rgb(2,81,177) 76%);
+	background-image: -moz-linear-gradient(bottom, rgb(153,204,255) 21%, rgb(2,81,177) 76%);
+	background-image: -webkit-linear-gradient(bottom, rgb(153,204,255) 21%, rgb(2,81,177) 76%);
+	background-image: -ms-linear-gradient(bottom, rgb(153,204,255) 21%, rgb(2,81,177) 76%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.21, rgb(153,204,255)),
+	color-stop(0.76, rgb(2,81,177))
+);
+
+
 	/* TODO meterlo para chrome */
 	color: #FFF;
 
@@ -536,4 +551,5 @@ section {
 #extras .copyleft {
 	float:right;
 	color:blue;
+	margin-right: 20px;
 }
