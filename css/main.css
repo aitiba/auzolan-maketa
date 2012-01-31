@@ -156,7 +156,9 @@ img.left, figure.left {
 	/* Banner */
 	#banner h1 {
 		display: inline-block;
-		padding: 0 1.2em;
+		padding: 0 2em;
+		margin-right: 7em;
+		margin-top: 0.5em;
 	}
 	#banner h1 a:link, #banner h1 a:visited {
 		color: #000305;
@@ -199,6 +201,7 @@ img.left, figure.left {
 		height: 30px;
 		padding: 5px 0.5em;
 		text-decoration: none;
+		margin-right: 3.5em;
 	}
 	#banner nav a:hover, #banner nav a:active,
 	#banner nav .active a:link, #banner nav .active a:visited {
@@ -217,6 +220,89 @@ img.left, figure.left {
 		-webkit-border-bottom-left-radius: 5px;*/
 	}
 
+	/*------------------------------------*\
+	NAV
+\*------------------------------------*/
+#nav{
+	list-style:none;
+	font-weight:bold;
+	margin-bottom:10px;
+	/* Clear floats */
+	width:100%;
+	/* Bring the nav above everything else--uncomment if needed.
+	position:relative;
+	z-index:5;
+	*/
+}
+#nav li{
+	float:right;
+	position:relative;
+	margin-right: 50px;
+}
+#nav a{
+	display:block;
+	padding:5px;
+	color:#fff;
+	/*background:#333;*/
+	text-decoration:none;
+}
+#nav a:hover{
+	color:#fff;
+	background:#6b0c36;
+	text-decoration:underline;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul{
+	background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+	background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+	list-style:none;
+	position:absolute;
+	left:-9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+	z-index:1;
+}
+#nav ul li{
+	padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+	float:none;
+}
+#nav ul a{
+	white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+}
+#nav li:hover ul{ /* Display the dropdown on hover */
+	left:0; /* Bring back on-screen when needed */
+}
+#nav li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+	background:#6b0c36;
+	text-decoration:underline;
+}
+#nav li:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+	text-decoration:none;
+}
+#nav li:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+	background:#333;
+}
+
+#lang {
+	margin-left: 87%;
+	margin-top: -60px;
+	margin-bottom:-50px;
+	font-size: 1.5em;
+}
+
+#serch {
+	margin-left: 70%;
+	margin-top: 7px;
+	margin-bottom:-50px;
+	font-size: 1.5em;
+}
+#lang ul li{
+	list-style-type: none;
+	display: inline;
+}
+
+#lang ul li a {
+	text-decoration: none;
+}
 /*
 	Featured
 *****************/
@@ -297,7 +383,7 @@ section {
 *****************/
 #content {
 	background: #fff;
-	margin: 0 10px;
+	margin-top: 0;
 	overflow: hidden;
 	padding: 10px 10px;
 	width: 97%;
@@ -311,26 +397,33 @@ section {
 	box-shadow: 0.2em 0.2em 0.1em #888;	
 }
 
-.multicolumn{
-	-moz-column-width: 12em;
-	-moz-column-gap: 15px;
-	/*-moz-column-rule: 1px solid #ccc;*/
-	-webkit-column-width: 12em;
-	-webkit-column-gap: 15px;
-	/*-webkit-column-rule: 1px solid #ccc;*/
-	/* para que las columnas funcionen en opera y IE10*/
-	column-width: 12em;
-	column-gap: 15px;
+.columns{
+    float: left;
+    width: 12em;
+    margin: 0 0.8em;
+    vertical-align: top;
 }
 
-.multicolumn h3 a:link, .multicolumn h3 a:visited {color: #000305; text-decoration: none;}
+/*.multicolumn{
+	-moz-column-width: 12em;
+	-moz-column-gap: 15px;
+	-moz-column-rule: 1px solid #ccc;
+	-webkit-column-width: 12em;
+	-webkit-column-gap: 15px;
+	-webkit-column-rule: 1px solid #ccc;
+	// para que las columnas funcionen en opera y IE10
+	column-width: 12em;
+	column-gap: 15px;
+}*/
+
+/*.multicolumn h3 a:link, .multicolumn h3 a:visited {color: #000305; text-decoration: none;}
 .multicolumn h3 a:hover, .multicolumn h3 a:active {color: #fff;}
 
 .multicolumn h3 a {
 	-moz-text-shadow: 0.1em 0.1em 0.05em #888;
 	-webkit-text-shadow: 0.1em 0.1em 0.05em #888;
 	text-shadow: 0.1em 0.1em 0.05em #888;
-}
+}*/
 .adhesivo {
     background-color: #FFCC33;
 	-moz-transform: rotate(-45deg) scale(1);
@@ -363,21 +456,31 @@ section {
 /*
 	Extras
 *****************/
-#extras {margin: 0 auto 3em auto; overflow: hidden;}
+#extras {
+	margin: 0 auto 3em auto; 
+	overflow: hidden;
+	margin-left: 10px;
+	padding: 10px 10px;
+	width: 97%;
+	background: -moz-linear-gradient(center top , #0250B1, #99CCFF) repeat scroll 0 0 transparent;
+	/* TODO meterlo para chrome */
+	color: #FFF;
+
+}
 
 #extras ul {list-style: none; margin: 0;}
-#extras li {border-bottom: 1px solid #fff;}
+/*#extras li {border-bottom: 1px solid #fff;}*/
 #extras h2 {
-	color: #C74350;
+	color: #C74A50;
 	font-size: 1.429em;
 	margin-bottom: .25em;
 	padding: 0 3px;
 }
 
 #extras a:link, #extras a:visited {
-	color: #444;
+	color: #FFF;
 	display: block;
-	border-bottom: 1px solid #F4E3E3;
+	/*border-bottom: 1px solid #F4E3E3;*/
 	text-decoration: none;
 	padding: .3em .25em;
 }
@@ -394,16 +497,19 @@ section {
 
 	/* Blogroll */
 	#extras .blogroll {
-		float: left;
-		width: 615px;
+		padding-left: 20px;
+		width: 40%;
+		float:left;
+	
 	}
 	
 	#extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
 	
 	/* Social */
 	#extras .social {
-		float: right;
-		width: 175px;
+		padding-left: 20px;
+		width: 12%;
+		float:left;
 	}
 	
 	#extras div[class='social'] a {
@@ -420,122 +526,14 @@ section {
 		.social a[href*='/feed/'] {background-image: url('../images/icons/rss.png');}
 		.social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');}
 
-/*
-	About
-*****************/
-#about {
-	background: #fff;
-	font-style: normal;
-	margin-bottom: 2em;
-	overflow: hidden;
-	padding: 20px;
-	text-align: left;
-	width: 760px;
-	
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+/* Aboutus */
+#extras .aboutus {
+	width: 42%;
+	float: left;
 }
 
-#about .primary {float: left; width: 165px;}
-#about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
-#about .photo {float: left; margin: 5px 20px;}
-
-#about .url:link, #about .url:visited {text-decoration: none;}
-
-#about .bio {float: right; width: 500px;}
-
-/*
-	Footer
-*****************/
-#contentinfo {padding-bottom: 2em; text-align: right;}
-
-/***** Sections *****/
-/* Blog */
-.hentry {
-	border-bottom: 1px solid #eee;
-	padding: 1.5em 0;
+/* copyleft */
+#extras .copyleft {
+	float:right;
+	color:blue;
 }
-li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
-#content > .hentry {padding: 1em 0;}
-
-.entry-title {font-size: 1.429em; margin-bottom: 0;}
-.entry-title a:link, .entry-title a:visited {text-decoration: none;}
-
-.hentry .post-info * {font-style: normal;}
-
-	/* Content */
-	.hentry footer {margin-bottom: 2em;}
-	.hentry footer address {display: inline;}
-	#posts-list footer address {display: block;}
-
-	/* Blog Index */
-	#posts-list {list-style: none; margin: 0;}
-	#posts-list .hentry {padding-left: 200px; position: relative;}
-	#posts-list .hentry:hover {
-		background: #C64350;
-		color: #fff;
-	}
-	#posts-list .hentry:hover a:link, #posts-list .hentry:hover a:visited {
-		color: #F6CF74;
-		text-shadow: 1px 1px 1px #333;
-	}
-	
-	#posts-list footer {
-		left: 10px;
-		position: absolute;
-		top: 1.5em;
-		width: 190px;
-	}
-	
-	/* About the Author */
-	#about-author {
-		background: #f9f9f9;
-		clear: both;
-		font-style: normal;
-		margin: 2em 0;
-		padding: 10px 20px 15px 20px;
-		
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-	}
-	
-	#about-author strong {
-		color: #C64350;
-		clear: both;
-		display: block;
-		font-size: 1.429em;
-	}
-	
-	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
-	
-	/* Comments */
-	#comments-list {list-style: none; margin: 0 1em;}
-	#comments-list blockquote {
-		background: #f8f8f8;
-		clear: both;
-		font-style: normal;
-		margin: 0;
-		padding: 15px 20px;
-		
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-	}
-	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
-	
-	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
-	
-	/* Add a Comment */
-	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
-	#add-comment input[type='text'],
-	#add-comment input[type='email'],
-	#add-comment input[type='url'] {float: left; width: 200px;}
-	
-	#add-comment textarea {float: left; height: 150px; width: 495px;}
-	
-	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
-	
-	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
-	#add-comment * {margin-bottom: .5em;}
